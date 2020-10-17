@@ -1,3 +1,10 @@
+# Important resources
+- https://github.com/expo/create-react-native-app 用这个bootstrap. Expo是一个线上开发运行react native的平台
+- https://github.com/austintgriffith/scaffold-eth 用来操作区块链相关，对我们特别有用的是提供的一些components https://github.com/austintgriffith/scaffold-eth#-components 还有hooks https://github.com/austintgriffith/scaffold-eth#-hooks
+- NCR关于这次hackathon的页面 https://hackgt.ncrcloud.com/dashboard
+- NCR Developer API列表 https://developer.ncrcloud.com/portals/dev-portal/api-explorer/details/8849/documentation?proxy=bsp-tdm-transaction-document-v2&path=get_transaction-documents_id_receipt
+- NCR Selling Service入门，提供一些支付和用户管理相关API https://hackgt.ncrcloud.com/assets/files/SellingService.pdf
+
 # Taidl Design Doc
 
 ## Goal
