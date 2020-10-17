@@ -1,34 +1,37 @@
-//import * as React from "react";
-import React, { useCallback, useEffect, useState } from "react";
-import { View, Text } from "react-native";
-import useUserProvider from "./hooks/UserProvider";
-import JsonRpcProvider from "@ethersproject/providers";
-import useUserAddress from "eth-hooks";
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const DEBUG = true
+// import loginScreen from './views/login'
+// import SignInScreen from './views/signup'
+import DetailsScreen from './views/test'
+//import HomeScreen from './views/homeScreen'
+import mainScreen from './views/mainScreen'
 
-// 🏠 Your local provider is usually pointed at your local blockchain
-const localProviderUrl = "http://localhost:8545"; // for xdai: https://dai.poa.network
-// as you deploy to other networks you can set REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
-const localProviderUrlFromEnv = process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : localProviderUrl;
-if(DEBUG) console.log("🏠 Connecting to provider:", localProviderUrlFromEnv);
-const localProvider = new JsonRpcProvider(localProviderUrlFromEnv);
+// const DEBUG = true
 
-export default function App() {
-  const [injectedProvider, setInjectedProvider] = useState();
-  const userProvider = useUserProvider(injectedProvider, localProvider);
-  const address = useUserAddress(userProvider);
+// // 🏠 Your local provider is usually pointed at your local blockchain
+// const localProviderUrl = "http://localhost:8545"; // for xdai: https://dai.poa.network
+// // as you deploy to other networks you can set REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
+// const localProviderUrlFromEnv = process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : localProviderUrl;
+// if(DEBUG) console.log("🏠 Connecting to provider:", localProviderUrlFromEnv);
+// const localProvider = new JsonRpcProvider(localProviderUrlFromEnv);
 
+
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-      <Text>'${address}'</Text>
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={mainScreen} />
+        <Drawer.Screen name="Login" component={DetailsScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
+
+export default App;
