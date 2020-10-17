@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@ethersproject/providers": "^5.0.12",
+    "burner-provider": "^1.0.38",
+    "eth-hooks": "^1.1.2",
+    "ethers": "^5.0.17",
     "expo": "~39.0.0",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
