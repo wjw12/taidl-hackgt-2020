@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // import loginScreen from './views/login'
 // import SignInScreen from './views/signup'
-import DetailsScreen from './views/test'
+import LoginScreen from './views/loginScreen'
 //import HomeScreen from './views/homeScreen'
 import mainScreen from './views/mainScreen'
 
@@ -28,7 +28,7 @@ function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={mainScreen} />
-        <Drawer.Screen name="Login" component={DetailsScreen} />
+        <Drawer.Screen name="Login" component={LoginScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
