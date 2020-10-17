@@ -1,9 +1,20 @@
+# 进度
+导入了一堆相关的hook，安装了一些dependencies
+
+最重要的问题：如何make transaction还不会
+
+transaction依赖于生成一个wallet
+
+在helpers/BurnerProvider有相关code，但是在App.js里面还没法调用async function
+
+需要两个provider，一个用来连接infura.io的API，一个用来生成本地钱包
+
+参考代码在scaffold-eth/react-app/src/components/Account.js
+
 # 技术checklist
-- [ ] 如何make a transaction
-- [ ] 上传private key
-- [ ] 导入private key
-- [ ] 新建address，切换不同的address
-- [ ] 把收款信息放进二维码，同时要考虑API来设计二维码里面储存什么东西
+- [ ] 如何make a transaction - 用helpers/Transactor，需要本地private key
+- [ ] 新建address - 在helpers/BurnerProvider里面有生成address和key的方法
+- [ ] 把收款信息放进二维码 - react有QR code模块
 
 # Run React app
 - npm start
