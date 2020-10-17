@@ -1,14 +1,22 @@
 {
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@ethersproject/providers": "^5.0.12",
+    "@react-native-community/async-storage": "^1.12.1",
+    "antd": "^4.7.0",
+    "bnc-notify": "^1.5.0",
     "burner-provider": "^1.0.38",
     "eth-hooks": "^1.1.2",
     "ethers": "^5.0.17",
     "expo": "~39.0.0",
+    "qrcode.react": "^1.0.0",
     "react": "~16.13.0",
+    "react-async": "^10.0.1",
+    "react-blockies": "^1.4.1",
     "react-dom": "~16.13.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
-    "react-native-web": "0.13.13"
+    "react-native-web": "0.13.13",
+    "react-qr-reader": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "7.9.0"
