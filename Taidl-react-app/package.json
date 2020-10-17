@@ -8,8 +8,6 @@
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
     "burner-provider": "^1.0.38",
-    "eth-hooks": "^1.1.2",
-    "ethers": "^5.0.17",
     "expo": "^39.0.3",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
