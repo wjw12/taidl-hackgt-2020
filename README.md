@@ -1,3 +1,7 @@
+# Run React app
+- npm start
+- yarn run ios/npm run ios or yarn run android/npm run android
+
 # UI libraries
 - https://material-ui.com/zh/
 - https://ant.design/
@@ -27,7 +31,7 @@ Tidal is a xDAI wallet app that enables people to use cryptocurrency (xDAI stabl
 - Support conversion to and from fiat (USD, GBP, EUR, AUD)
 
 ## Types of xDAI transfer
-1. In-network: transfer between Tidal users is in-network. 
+1. In-network: transfer between Tidal users is in-network.
 - zero fees (Tidal pays for it)
 - User ID appears as the sender and receipient, unless in an anonymous transfer
 - mobile push notification
@@ -55,7 +59,7 @@ When user logs in a different device, those accounts with Tidal-managed keys wil
 
 Information associated with an account:
 - whether is default (one user ID can only have 1 default account. It will be used as the default method for receiving payment)
-- whether is anonymous - by default every account is not anonymous, which means when making a transfer the sender name will be user ID. And when receiving an in-network payment the receipient name shows user ID. User can set an account to anonymous then the account name appears as "Tidal User" as sender and receipient. 
+- whether is anonymous - by default every account is not anonymous, which means when making a transfer the sender name will be user ID. And when receiving an in-network payment the receipient name shows user ID. User can set an account to anonymous then the account name appears as "Tidal User" as sender and receipient.
 - account label (e.g. default, savings, secret wallet). Only visible to local user. User can name whatever they like, but no duplicates.
 - key management mode
 - account address (Eth address): normally it's not very useful for in-network transfer unless anonymous
