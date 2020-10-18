@@ -85,11 +85,11 @@ function HomeScreen({ navigation }) {
       </View>
       <TouchableOpacity
         style={[styles.touchable, {
-            backgroundColor: '#1f65ff',
-            borderColor: '#1f65ff',
+            backgroundColor: '#00BFA4',
+            borderColor: '#00BFA4',
             borderWidth: 1,
         }]}
-        onPress={() => {}}
+        onPress={() => {navigation.navigate('RecipientScreen')}}
       >
       <Text style={[styles.textSign, {
           color:'white'
@@ -97,10 +97,10 @@ function HomeScreen({ navigation }) {
       </TouchableOpacity>
 
       <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => {navigation.navigate('RequestScreen')}}
           style={[styles.touchable, {
-            backgroundColor: '#1f65ff',
-            borderColor: '#1f65ff',
+            backgroundColor: '#00BFA4',
+            borderColor: '#00BFA4',
             borderWidth: 1,
         }]}
       >
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     buttonView:{
-        backgroundColor: '#1f65ff',
+        backgroundColor: '#00BFA4',
         alignSelf: 'flex-end',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,

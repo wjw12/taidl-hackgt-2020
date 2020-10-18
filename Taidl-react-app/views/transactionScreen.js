@@ -12,10 +12,10 @@ import {
     StatusBar
 } from 'react-native';
 
-function DetailsScreen({ navigation }) {
+function TransactionScreen({ navigation }) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+        <Text>Transaction Screen</Text>
         <Button
           title="Go to Details... again"
           onPress={() => navigation.navigate('Details')}
@@ -24,4 +24,4 @@ function DetailsScreen({ navigation }) {
     );
   }
 
-export default DetailsScreen;
+export default TransactionScreen;

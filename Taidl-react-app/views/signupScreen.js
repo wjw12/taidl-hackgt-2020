@@ -119,7 +119,7 @@ const SignUpScreen = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#1f65ff' barStyle="light-content"/>
+          <StatusBar backgroundColor='#00BFA4' barStyle="light-content"/>
         <View style={styles.header}>
             <Text style={styles.text_header}>Register Now!</Text>
         </View>
@@ -147,7 +147,7 @@ const SignUpScreen = ({navigation}) => {
                 >
                     <Feather 
                         name="check-circle"
-                        color="#1f65ff"
+                        color="#00BFA4"
                         size={20}
                     />
                 </Animatable.View>
@@ -244,8 +244,8 @@ const SignUpScreen = ({navigation}) => {
             <View style={styles.button}>
                 <TouchableOpacity
                     style={[styles.signIn, {
-                        borderColor: '#1f65ff',
-                        backgroundColor: '#1f65ff',
+                        borderColor: '#00BFA4',
+                        backgroundColor: '#00BFA4',
                         borderWidth: 1
                     }]}
                     onPress={() => {signupHandle(data.username, data.password)}}
@@ -258,13 +258,13 @@ const SignUpScreen = ({navigation}) => {
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
                     style={[styles.signIn, {
-                        borderColor: '#1f65ff',
+                        borderColor: '#00BFA4',
                         borderWidth: 1,
                         marginTop: 15
                     }]}
                 >
                     <Text style={[styles.textSign, {
-                        color: '#1f65ff'
+                        color: '#00BFA4'
                     }]}>Sign In</Text>
                 </TouchableOpacity>
             </View>
@@ -279,7 +279,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#1f65ff'
+      backgroundColor: '#00BFA4'
     },
     header: {
         flex: 1,

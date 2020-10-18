@@ -58,6 +58,28 @@ export function DrawerNavigation(props) {
                             label="Home"
                             onPress={() => {props.navigation.navigate('Home')}}
                         />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="qrcode" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="My QR Code"
+                            onPress={() => {props.navigation.navigate('RequestScreen')}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="ninja" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Search People"
+                            onPress={() => {props.navigation.navigate('RecipientScreen')}}
+                        />
                     </Drawer.Section>
                 </View>
             </DrawerContentScrollView>
