@@ -17,6 +17,7 @@ const MainTabScreen = () => (
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
+      barStyle={{ backgroundColor: '#00BFA4' }}
     >
       <Tab.Screen
         name="Home"
