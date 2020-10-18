@@ -1,20 +1,10 @@
-# 进度
-导入了一堆相关的hook，安装了一些dependencies
+# Taidl - Everyday Payment with xDai Blockchain
 
-最重要的问题：如何make transaction还不会
+We present Taidl, an app that makes payment with cryptocurrency easy. You don't have to be an expert in blockchain. You don't need to worry about high transaction fee or fluctuation in the conversion rate. Taidl is powered with xDai, a stablecoin that lives on a sidechain of Ethereum. The transaction fee is as low as $0.01 for 500 transactions, making it the perfect solution to peer-to-peer payments, local business payments, online payments and international transfers.
 
-transaction依赖于生成一个wallet
+Taidl app has even more exciting features that assists you in your daily spending. There is a address book for storing your contacts, so you don't need to search and type the receipient account every time you pay. You can scan a QR code to make a payment. You can check your transaction history to keep track of your finance. 
 
-在helpers/BurnerProvider有相关code，但是在App.js里面还没法调用async function
-
-需要两个provider，一个用来连接infura.io的API，一个用来生成本地钱包
-
-参考代码在scaffold-eth/react-app/src/components/Account.js
-
-# 技术checklist
-- [ ] 如何make a transaction - 用helpers/Transactor，需要本地private key
-- [ ] 新建address - 在helpers/BurnerProvider里面有生成address和key的方法
-- [ ] 把收款信息放进二维码 - react有QR code模块
+The registration process is especially easy. Just sign up with your favorite user name, which does not have to be your real name. Type in your password, just like you are using any traditional finance app without the burden to understand how cryptocurrency works. For experts and nerds who want full control of the crypto wallet, we can handle over the custody of private keys to you. Otherwise your private keys will be securely stored in our encrypted server as safe as a bank.
 
 # Run React app
 - npm start
