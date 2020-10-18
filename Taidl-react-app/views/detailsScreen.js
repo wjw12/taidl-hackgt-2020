@@ -14,7 +14,7 @@ import RecentTransactions from '../model/recent'
 import { randInt } from '../utils'
 
 const NUM_THIS_WEEK = randInt(3) + 1
-const NUM_LAST_WEEK = randInt(5) + 1
+const NUM_LAST_WEEK = randInt(5) + 2
 
 
 function DetailsScreen({ navigation }) {

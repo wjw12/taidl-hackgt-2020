@@ -2,14 +2,7 @@ import React from 'react';
 import { 
     View, 
     Text, 
-    Button, 
-    TouchableOpacity, 
-    Dimensions,
-    TextInput,
-    Platform,
-    StyleSheet,
-    ScrollView,
-    StatusBar
+    Button
 } from 'react-native';
 
 function TransactionScreen({ navigation }) {

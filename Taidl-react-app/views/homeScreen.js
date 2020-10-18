@@ -4,12 +4,7 @@ import {
     Text, 
     Button, 
     TouchableOpacity, 
-    Dimensions,
-    TextInput,
-    Platform,
-    StyleSheet,
-    ScrollView,
-    StatusBar
+    StyleSheet
 } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';

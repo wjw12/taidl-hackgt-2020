@@ -34,7 +34,7 @@ const MainTabScreen = () => (
         }}
       />
       <Tab.Screen
-        name="Notifications"
+        name="Transaction Activity"
         component={DetailsStackScreen}
         options={{
           tabBarLabel: 'Activity',
