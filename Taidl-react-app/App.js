@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AuthContext } from './components/context';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import { DrawerNavigation } from './components/drawerNavi';
 import LoginScreen from './views/loginScreen'
 import SignUpScreen from './views/signupScreen';
 //import HomeScreen from './views/homeScreen'
@@ -92,9 +93,6 @@ function App() {
     signUp: () => {
       // setUserToken('fgkj');
       // setIsLoading(false);
-    },
-    toggleTheme: () => {
-      setIsDarkTheme( isDarkTheme => !isDarkTheme );
     }
   }), []);
 
@@ -124,10 +122,10 @@ function App() {
     <AuthContext.Provider value={authContext}>
     <NavigationContainer>
       { loginState.userToken !== null ? (
-        <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Navigator drawerContent={props => <DrawerNavigation {...props} />}>
           <Drawer.Screen name="Home" component={mainScreen} />
-          <Drawer.Screen name="Log Out" component={LoginScreen} />
         </Drawer.Navigator>
+
        )
       :
         <RootStackScreen/>
