@@ -2,47 +2,46 @@ import React from 'react';
 import { 
     View, 
     Text, 
+    Button, 
     TouchableOpacity, 
+    Dimensions,
     TextInput,
     Platform,
-    StyleSheet ,
+    StyleSheet,
+    ScrollView,
     StatusBar,
     Alert
 } from 'react-native';
-import { useTheme } from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import { AuthContext } from '../components/context';
 import Users from '../model/users';
 
-const LoginScreen = ({navigation}) => {
-    const { colors } = useTheme();
+const SignUpScreen = ({navigation}) => {
+
     const [data, setData] = React.useState({
         username: '',
         password: '',
+        confirm_password: '',
         check_textInputChange: false,
         secureTextEntry: true,
-        isValidUser: true,
+        confirm_secureTextEntry: true,
         isValidPassword: true,
+        isValidConfirmPassword: true,
     });
 
-    const { signIn } = React.useContext(AuthContext);
-
     const textInputChange = (val) => {
-        if( val.trim().length > 0 ) {
+        if( val.length !== 0 ) {
             setData({
                 ...data,
                 username: val,
-                check_textInputChange: true,
-                isValidUser: true
+                check_textInputChange: true
             });
         } else {
             setData({
                 ...data,
                 username: val,
-                check_textInputChange: false,
-                isValidUser: false
+                check_textInputChange: false
             });
         }
     }
@@ -63,6 +62,22 @@ const LoginScreen = ({navigation}) => {
         }
     }
 
+    const handleConfirmPasswordChange = (val) => {
+        if( val.trim().length >= 8 ) {
+            setData({
+                ...data,
+                confirm_password: val,
+                isValidConfirmPassword: true
+            });
+        } else {
+            setData({
+                ...data,
+                confirm_password: val,
+                isValidConfirmPassword: false
+            });
+        }
+    }
+
     const updateSecureTextEntry = () => {
         setData({
             ...data,
@@ -70,11 +85,20 @@ const LoginScreen = ({navigation}) => {
         });
     }
 
-    const loginHandle = (userName, password) => {
+    const updateConfirmSecureTextEntry = () => {
+        setData({
+            ...data,
+            confirm_secureTextEntry: !data.confirm_secureTextEntry
+        });
+    }
 
-        const foundUser = Users.filter( item => {
-            return userName == item.username && password == item.password;
-        } );
+    const signupHandle = (userName, password) => {
+        const new_id = Users.length+1;
+
+        Users.push({id: new_id, 
+            username: data.username, 
+            password: data.password, 
+            userToken: 'token'+new_id})
 
         if ( data.username.length == 0 || data.password.length == 0 ) {
             Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
@@ -83,41 +107,37 @@ const LoginScreen = ({navigation}) => {
             return;
         }
 
-        if ( foundUser.length == 0 ) {
-            Alert.alert('Invalid User!', 'Username or password is incorrect.', [
+        if ( data.password.length < 8 ) {
+            Alert.alert('Invalid Password!', 'Password must be 8 characters long.', [
                 {text: 'Okay'}
             ]);
             return;
         }
-        signIn(foundUser);
+        console.log(Users)
+        navigation.goBack()
     }
 
     return (
       <View style={styles.container}>
+          <StatusBar backgroundColor='#1f65ff' barStyle="light-content"/>
         <View style={styles.header}>
-          <Text style={styles.text_header}>Welcome To Taidl!</Text>
+            <Text style={styles.text_header}>Register Now!</Text>
         </View>
         <Animatable.View 
             animation="fadeInUpBig"
-            style={[styles.footer, {
-                backgroundColor: colors.background
-            }]}
+            style={styles.footer}
         >
-            <Text style={[styles.text_footer, {
-                color: colors.text
-            }]}>Username</Text>
+            <ScrollView>
+            <Text style={styles.text_footer}>Username</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
-                    color={colors.text}
+                    color="#05375a"
                     size={20}
                 />
                 <TextInput 
                     placeholder="Your Username"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
+                    style={styles.textInput}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -132,25 +152,21 @@ const LoginScreen = ({navigation}) => {
                     />
                 </Animatable.View>
                 : null}
-            </View> 
+            </View>
 
             <Text style={[styles.text_footer, {
-                color: colors.text,
                 marginTop: 35
             }]}>Password</Text>
             <View style={styles.action}>
                 <Feather 
                     name="lock"
-                    color={colors.text}
+                    color="#05375a"
                     size={20}
                 />
                 <TextInput 
                     placeholder="Your Password"
-                    placeholderTextColor="#666666"
                     secureTextEntry={data.secureTextEntry ? true : false}
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
+                    style={styles.textInput}
                     autoCapitalize="none"
                     onChangeText={(val) => handlePasswordChange(val)}
                 />
@@ -177,27 +193,70 @@ const LoginScreen = ({navigation}) => {
             <Text style={styles.errorMsg}>Password must be 8 characters long.</Text>
             </Animatable.View>
             }
-            
 
-            {/* <TouchableOpacity>
-                <Text style={{color: '#1f65ff', marginTop:15}}>Forgot password?</Text>
-            </TouchableOpacity> */}
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Confirm Password</Text>
+            <View style={styles.action}>
+                <Feather 
+                    name="lock"
+                    color="#05375a"
+                    size={20}
+                />
+                <TextInput 
+                    placeholder="Confirm Your Password"
+                    secureTextEntry={data.confirm_secureTextEntry ? true : false}
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val) => handleConfirmPasswordChange(val)}
+                />
+                <TouchableOpacity
+                    onPress={updateConfirmSecureTextEntry}
+                >
+                    {data.secureTextEntry ? 
+                    <Feather 
+                        name="eye-off"
+                        color="grey"
+                        size={20}
+                    />
+                    :
+                    <Feather 
+                        name="eye"
+                        color="grey"
+                        size={20}
+                    />
+                    }
+                </TouchableOpacity>
+            </View>
+            { data.isValidConfirmPassword ? null : 
+            <Animatable.View animation="fadeInLeft" duration={500}>
+            <Text style={styles.errorMsg}>Passwords do not match.</Text>
+            </Animatable.View>
+            }
+            <View style={styles.textPrivate}>
+                <Text style={styles.color_textPrivate}>
+                    By signing up you agree to our
+                </Text>
+                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Terms of service</Text>
+                <Text style={styles.color_textPrivate}>{" "}and</Text>
+                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Privacy policy</Text>
+            </View>
             <View style={styles.button}>
                 <TouchableOpacity
                     style={[styles.signIn, {
-                        backgroundColor: '#1f65ff',
                         borderColor: '#1f65ff',
-                        borderWidth: 1,
+                        backgroundColor: '#1f65ff',
+                        borderWidth: 1
                     }]}
-                    onPress={() => {loginHandle( data.username, data.password )}}
+                    onPress={() => {signupHandle(data.username, data.password)}}
                 >
                 <Text style={[styles.textSign, {
                     color:'white'
-                }]}>Sign In</Text>
+                }]}>Sign Up</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('SignUpScreen')}
+                    onPress={() => navigation.goBack()}
                     style={[styles.signIn, {
                         borderColor: '#1f65ff',
                         borderWidth: 1,
@@ -206,15 +265,16 @@ const LoginScreen = ({navigation}) => {
                 >
                     <Text style={[styles.textSign, {
                         color: '#1f65ff'
-                    }]}>Sign Up</Text>
+                    }]}>Sign In</Text>
                 </TouchableOpacity>
             </View>
+            </ScrollView>
         </Animatable.View>
       </View>
     );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -228,7 +288,7 @@ const styles = StyleSheet.create({
         paddingBottom: 50
     },
     footer: {
-        flex: 3,
+        flex: Platform.OS === 'ios' ? 4 : 5,
         backgroundColor: '#fff',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
@@ -241,7 +301,7 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
     text_footer: {
-        color: '#1f65ff',
+        color: '#05375a',
         fontSize: 18
     },
     action: {
@@ -251,22 +311,11 @@ const styles = StyleSheet.create({
         borderBottomColor: '#f2f2f2',
         paddingBottom: 5
     },
-    actionError: {
-        flexDirection: 'row',
-        marginTop: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: '#1f65ff',
-        paddingBottom: 5
-    },
     textInput: {
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
         paddingLeft: 10,
-        color: '#1f65ff',
-    },
-    errorMsg: {
-        color: '#FF0000',
-        fontSize: 14,
+        color: '#05375a',
     },
     button: {
         alignItems: 'center',
@@ -282,6 +331,18 @@ const styles = StyleSheet.create({
     textSign: {
         fontSize: 18,
         fontWeight: 'bold'
+    },
+    textPrivate: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: 20,
+        height: 2,
+    },
+    errorMsg: {
+        color: '#FF0000',
+        fontSize: 14,
+    },
+    color_textPrivate: {
+        color: 'grey'
     }
   });
-
