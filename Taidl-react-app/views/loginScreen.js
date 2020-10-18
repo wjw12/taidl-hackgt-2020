@@ -125,7 +125,7 @@ const LoginScreen = ({navigation}) => {
                 >
                     <Feather 
                         name="check-circle"
-                        color="#1f65ff"
+                        color="#00BFA4"
                         size={20}
                     />
                 </Animatable.View>
@@ -177,14 +177,14 @@ const LoginScreen = ({navigation}) => {
             }
             
 
-            {/* <TouchableOpacity>
-                <Text style={{color: '#1f65ff', marginTop:15}}>Forgot password?</Text>
-            </TouchableOpacity> */}
+            <TouchableOpacity>
+                <Text style={{color: '#00BFA4', marginTop:15}}>Forgot password?</Text>
+            </TouchableOpacity>
             <View style={styles.button}>
                 <TouchableOpacity
                     style={[styles.signIn, {
-                        backgroundColor: '#1f65ff',
-                        borderColor: '#1f65ff',
+                        backgroundColor: '#00BFA4',
+                        borderColor: '#00BFA4',
                         borderWidth: 1,
                     }]}
                     onPress={() => {loginHandle( data.username, data.password )}}
@@ -197,13 +197,13 @@ const LoginScreen = ({navigation}) => {
                 <TouchableOpacity
                     onPress={() => navigation.navigate('SignUpScreen')}
                     style={[styles.signIn, {
-                        borderColor: '#1f65ff',
+                        borderColor: '#00BFA4',
                         borderWidth: 1,
                         marginTop: 15
                     }]}
                 >
                     <Text style={[styles.textSign, {
-                        color: '#1f65ff'
+                        color: '#00BFA4'
                     }]}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
@@ -217,7 +217,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#1f65ff'
+      backgroundColor: '#00BFA4'
     },
     header: {
         flex: 1,
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
     text_footer: {
-        color: '#1f65ff',
+        color: '#00BFA4',
         fontSize: 18
     },
     action: {
@@ -253,14 +253,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#1f65ff',
+        borderBottomColor: '#00BFA4',
         paddingBottom: 5
     },
     textInput: {
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
         paddingLeft: 10,
-        color: '#1f65ff',
+        color: '#00BFA4',
     },
     errorMsg: {
         color: '#FF0000',

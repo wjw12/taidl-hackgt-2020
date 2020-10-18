@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './homeScreen';
 import DetailsScreen from './detailsScreen';
+import TransactionScreen from './transactionScreen';
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -24,7 +25,7 @@ const MainTabScreen = () => (
         component={HomeStackScreen}
         options={{
           tabBarLabel: 'Home',
-          tabBarColor: '#1f65ff',
+          tabBarColor: '#00BFA4',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-home" color={color} size={26} />
           ),
@@ -35,7 +36,7 @@ const MainTabScreen = () => (
         component={DetailsStackScreen}
         options={{
           tabBarLabel: 'Updates',
-          tabBarColor: '#1f65ff',
+          tabBarColor: '#00BFA4',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-notifications" color={color} size={26} />
           ),
@@ -49,7 +50,7 @@ export default MainTabScreen;
 const HomeStackScreen = ({navigation}) => (
     <HomeStack.Navigator screenOptions={{
         headerStyle: {
-        backgroundColor: '#1f65ff',
+        backgroundColor: '#00BFA4',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
@@ -59,7 +60,7 @@ const HomeStackScreen = ({navigation}) => (
         <HomeStack.Screen name="Home" component={HomeScreen} options={{
         title:'Wallet',
         headerLeft: () => (
-            <Icon.Button name="ios-menu" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
+            <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
         )
         }} />
     </HomeStack.Navigator>
@@ -68,17 +69,17 @@ const HomeStackScreen = ({navigation}) => (
 const DetailsStackScreen = ({navigation}) => (
     <DetailsStack.Navigator screenOptions={{
         headerStyle: {
-        backgroundColor: '#1f65ff',
+        backgroundColor: '#00BFA4',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
         fontWeight: 'bold'
         }
     }}>
-        <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
+        <DetailsStack.Screen name="Details" component={TransactionScreen} options={{
         title:'Wallet',
         headerLeft: () => (
-            <Icon.Button name="ios-menu" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
+            <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
         )
         }} />
     </DetailsStack.Navigator>
