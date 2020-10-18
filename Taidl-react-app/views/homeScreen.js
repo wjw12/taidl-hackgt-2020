@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import Icon from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { XDAI, USD, CONVERSION_RATE, PLACEHOLDER_ADDRESS, PLACEHOLDER_AMOUNT, POLL_INTERVAL } from "../constants"
 
@@ -27,12 +27,24 @@ import usePoller from "../hooks/poller"
 function HomeScreen({ navigation }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
   useEffect(() => {
     async function fetchData() {
       dispatch({type: "LOADING"})
 
       try {
-        const address = await getUserAddress(state.userId)
+        var userId = null
+        while (!userId) { 
+          userId = await AsyncStorage.getItem('userId'); 
+          await sleep(300); 
+        }
+        console.log("user is", userId); 
+        dispatch({type: "SET_USERID", payload: {userId: userId}})
+
+        const address = await getUserAddress(userId)
         dispatch({type: "ADDRESS_LOADED", payload: {address: address}})
         
       } catch (e) {
@@ -41,7 +53,7 @@ function HomeScreen({ navigation }) {
     }
 
     fetchData()
-  }, []) // userId
+  }, [])
 
   useEffect(() => {
     async function fetchData() {

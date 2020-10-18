@@ -14,7 +14,7 @@ import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { AuthContext } from '../components/context';
-import Users from '../model/users';
+import { findUserExists } from '../api/user'
 
 const LoginScreen = ({navigation}) => {
     const { colors } = useTheme();
@@ -70,12 +70,7 @@ const LoginScreen = ({navigation}) => {
         });
     }
 
-    const loginHandle = (userName, password) => {
-
-        const foundUser = Users.filter( item => {
-            return userName == item.username && password == item.password;
-        } );
-
+    const loginHandle = async (userName, password) => {
         if ( data.username.length == 0 || data.password.length == 0 ) {
             Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
                 {text: 'Okay'}
@@ -83,13 +78,16 @@ const LoginScreen = ({navigation}) => {
             return;
         }
 
-        if ( foundUser.length == 0 ) {
+        const foundUser = await findUserExists(userName)
+
+        if (!foundUser) {
             Alert.alert('Invalid User!', 'Username or password is incorrect.', [
                 {text: 'Okay'}
             ]);
             return;
         }
-        signIn(foundUser);
+
+        signIn([{username: userName, userToken: Math.random().toString()}]);
     }
 
     return (

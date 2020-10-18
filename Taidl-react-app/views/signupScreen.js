@@ -15,7 +15,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import Users from '../model/users';
+import { findUserExists, createUser } from '../api/user'
 
 const SignUpScreen = ({navigation}) => {
 
@@ -92,15 +92,8 @@ const SignUpScreen = ({navigation}) => {
         });
     }
 
-    const signupHandle = (userName, password) => {
-        const new_id = Users.length+1;
-
-        Users.push({id: new_id, 
-            username: data.username, 
-            password: data.password, 
-            userToken: 'token'+new_id})
-
-        if ( data.username.length == 0 || data.password.length == 0 ) {
+    const signupHandle = async (userName, password) => {
+        if ( username.length == 0 || password.length == 0 ) {
             Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
                 {text: 'Okay'}
             ]);
@@ -113,7 +106,18 @@ const SignUpScreen = ({navigation}) => {
             ]);
             return;
         }
-        console.log(Users)
+
+        const duplicateUser = await findUserExists(userName)
+        if (duplicateUser) {
+            Alert.alert('User already exists!', 'Please log in with the username.', [
+                {text: 'Okay'}
+            ]);
+            return;
+        }
+
+        console.log("sign up" , userName, password)
+        await createUser(userName, userName+"@gmail.com", password)
+
         navigation.goBack()
     }
 
