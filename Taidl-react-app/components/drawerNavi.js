@@ -98,12 +98,34 @@ export function DrawerNavigation(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="lightbulb-on-outline" 
+                                name="mdi-shield-key" 
                                 color={color}
                                 size={size}
                                 />
                             )}
-                            label="Explore"
+                            label="Recovery Phrase"
+                            onPress={() => {}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="mdi-account-cash" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Borrow"
+                            onPress={() => {}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="mdi-cash-usd-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Earn"
                             onPress={() => {}}
                         />
                         <DrawerItem 

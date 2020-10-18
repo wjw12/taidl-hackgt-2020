@@ -8,5 +8,7 @@ export const USD = "$"
 export const PLACEHOLDER_AMOUNT = "--.--"
 export const PLACEHOLDER_ADDRESS = ""
 
+export const TITLE = "Taidl Wallet"
+
 
 export const POLL_INTERVAL = 4000 // ms

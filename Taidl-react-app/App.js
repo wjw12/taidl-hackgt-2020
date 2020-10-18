@@ -19,8 +19,7 @@ import QRScanScreen from './views/QRScanScreen';
 import NewRecipientScreen from './views/newRecipientScreen';
 import SentConfirmScreen from './views/sentConfirmScreen';
 
-
-import { initialState, reducer} from './reducers/wallet'
+import { TITLE } from './constants'
 
 
 const Stack = createStackNavigator();
@@ -155,7 +154,7 @@ const RequestStackScreen = ({navigation}) => (
       headerTitleStyle: {fontWeight: 'bold'}
   }}>
     <RequestStack.Screen name="Home" component={RequestScreen} options={{
-      title:'Wallet',
+      title:TITLE,
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -174,7 +173,7 @@ const QRScanStackScreen = ({navigation}) => (
       headerTitleStyle: {fontWeight: 'bold'}
   }}>
     <QRScanStack.Screen name="Home" component={QRScanScreen} options={{
-      title:'Wallet',
+      title:TITLE,
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -193,7 +192,7 @@ const RecipientStackScreen = ({navigation}) => (
       headerTitleStyle: {fontWeight: 'bold'}
   }}>
     <RecipientStack.Screen name="Home" component={RecipientScreen} options={{
-      title:'Wallet',
+      title:TITLE,
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -212,7 +211,7 @@ const NewRecipientStackScreen = ({navigation}) => (
       headerTitleStyle: {fontWeight: 'bold'}
   }}>
     <NewRecipientStack.Screen name="Home" component={NewRecipientScreen} options={{
-      title:'Wallet',
+      title:TITLE,
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -231,7 +230,7 @@ const SentConfirmStackScreen = ({navigation}) => (
       headerTitleStyle: {fontWeight: 'bold'}
   }}>
     <SentConfirmStack.Screen name="Home" component={SentConfirmScreen} options={{
-      title:'Wallet',
+      title:TITLE,
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
       ),

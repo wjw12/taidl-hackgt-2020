@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './homeScreen';
 import DetailsScreen from './detailsScreen';
 import TransactionScreen from './transactionScreen';
+import { TITLE } from '../constants'
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -60,7 +61,7 @@ const HomeStackScreen = ({navigation}) => (
         }
     }}>
         <HomeStack.Screen name="Home" component={HomeScreen} options={{
-        title:'Wallet',
+        title:TITLE,
         headerLeft: () => (
             <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
         )
