@@ -27,7 +27,7 @@ const Contacts = [
         userId: 'nakamoto'
     },
     {
-        userId: 'NakemotoSatoshi'
+        userId: 'NakamotoSatoshi'
     }
 ]
 

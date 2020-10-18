@@ -98,20 +98,20 @@ function App() {
     }
   }), []);
 
-  // useEffect(() => {
-  //   setTimeout(async() => {
-  //     // setIsLoading(false);
-  //     let userToken;
-  //     userToken = null;
-  //     try {
-  //       userToken = await AsyncStorage.getItem('userToken');
-  //     } catch(e) {
-  //       console.log(e);
-  //     }
-  //     // console.log('user token: ', userToken);
-  //     dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
-  //   }, 1000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(async() => {
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
+      // console.log('user token: ', userToken);
+      dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
+    }, 1000);
+  }, []);
 
   if( loginState.isLoading ) {
     return(

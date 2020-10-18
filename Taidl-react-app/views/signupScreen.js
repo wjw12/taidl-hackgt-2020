@@ -93,7 +93,7 @@ const SignUpScreen = ({navigation}) => {
     }
 
     const signupHandle = async (userName, password) => {
-        if ( username.length == 0 || password.length == 0 ) {
+        if ( userName.length == 0 || password.length == 0 ) {
             Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
                 {text: 'Okay'}
             ]);

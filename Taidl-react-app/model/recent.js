@@ -40,7 +40,7 @@ const RecentTransactions = [
         amount: 50.85
     },
     {
-        userId: 'NakemotoSatoshi',
+        userId: 'NakamotoSatoshi',
         amount: 2.3
     }, 
     {

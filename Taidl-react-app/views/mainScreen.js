@@ -3,10 +3,11 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './homeScreen';
-import DetailsScreen from './test';
+import DetailsScreen from './detailsScreen';
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
