@@ -31,10 +31,10 @@ const MainTabScreen = () => (
         }}
       />
       <Tab.Screen
-        name="Notifications"
+        name="Transaction Activity"
         component={DetailsStackScreen}
         options={{
-          tabBarLabel: 'Updates',
+          tabBarLabel: 'Transaction Activity',
           tabBarColor: '#00BFA4',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-notifications" color={color} size={26} />
