@@ -4,18 +4,19 @@ import {
     Text, 
     Image,
     Button, 
-    StyleSheet,
     ScrollView,
     SectionList
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+import SectionListStyle from '../styles/SectionList'
 import RecentTransactions from '../model/recent'
 import { randInt } from '../utils'
 
 const NUM_THIS_WEEK = randInt(3) + 1
 const NUM_LAST_WEEK = randInt(5) + 2
 
+const styles = SectionListStyle
 
 function DetailsScreen({ navigation }) {
   const [thisWeek, setThisWeek] = useState([])
@@ -89,47 +90,3 @@ function DetailsScreen({ navigation }) {
   }
 
 export default DetailsScreen;
-
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   paddingTop: 22
-  },
-  icon: {
-    flex: 1, 
-    flexDirection: 'row', 
-    margin: 'auto', 
-    maxWidth: 80,
-    height: 80,
-    paddingLeft: 5
-  },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(217,217,217,1.0)',
-  },
-  row: {
-    flex: 1,
-    flexDirection: "row", // main axis
-    justifyContent: "flex-start", // main axis
-    alignItems: "center", // cross axis
-    height: 80
-  },
-  userName: {
-    flex: 1,
-    padding: 10,
-    fontSize: 14
-  },
-  amount: {
-    flex: 1,
-    padding: 10,
-    textAlign: 'center',
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: 'rgba(217,217,217,1.0)',
-  },
-})
