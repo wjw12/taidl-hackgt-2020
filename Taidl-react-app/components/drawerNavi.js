@@ -43,6 +43,10 @@ export function DrawerNavigation(props) {
                                 <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
                                 <Caption style={styles.caption}>Friends</Caption>
                             </View>
+                            <View style={styles.section}>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>63</Paragraph>
+                                <Caption style={styles.caption}>Recent Activities</Caption>
+                            </View>
                         </View>
                     </View>
 
@@ -79,6 +83,39 @@ export function DrawerNavigation(props) {
                             )}
                             label="Search People"
                             onPress={() => {props.navigation.navigate('RecipientScreen')}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="crop-free" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Scan"
+                            onPress={() => {props.navigation.navigate('QRScanScreen')}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="lightbulb-on-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Explore"
+                            onPress={() => {}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="bell-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Notification"
+                            onPress={() => {}}
                         />
                     </Drawer.Section>
                 </View>
