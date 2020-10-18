@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { render } from 'react-dom';
 import { 
     View, 
     Text, 
+    Image,
     Button, 
-    TouchableOpacity, 
-    Dimensions,
-    TextInput,
-    Platform,
     StyleSheet,
     ScrollView,
-    StatusBar,
     SectionList
 } from 'react-native';
-import { AuthContext } from '../components/context';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import RecentTransactions from '../model/recent'
 import { randInt } from '../utils'
@@ -48,11 +43,12 @@ function DetailsScreen({ navigation }) {
   const renderItem = ({item}) => {
     console.log(item)
     const amount = (item.isSender ? '+ ' : '- ') + item.amount.toFixed(2).toString() + " xDai"
-
+    //const filename = item.userId == "Taidl User" ? 'anonymous.jpg' : 'user' + (randInt(10)+1).toString() + '.jpg'
+    //const uri = "https://storage.googleapis.com/jiewen.wang/temp/images/" + filename
     return (
       <View style={styles.row}>
-        <Text style={{flex: 1, flexDirection: 'row', margin: 'auto', width: 100, height: '100%'}}>Place holder text</Text>
-        
+        <FontAwesome style={styles.icon} name="circle" color="#d1f3ef" size={75}/>
+
         <View style={{
           flex: 5,
           flexDirection: 'row',
@@ -61,7 +57,7 @@ function DetailsScreen({ navigation }) {
           justifyContent: 'space-between',
         }}>
           <View style={{flex: 5, flexDirection: 'row', margin: 'auto', height: '100%'}}>
-      <Text style={styles.userName}>{item.userId}<br></br>{"ddd"}</Text>
+      <Text style={styles.userName}>{item.userId}</Text>
           </View>
           <View style={{flex: 2, flexDirection: 'row', margin: 'auto', height: '100%'}}>
             <Text style={styles.amount}>{amount}</Text>
@@ -98,6 +94,14 @@ const styles = StyleSheet.create({
   container: {
    flex: 1,
    paddingTop: 22
+  },
+  icon: {
+    flex: 1, 
+    flexDirection: 'row', 
+    margin: 'auto', 
+    maxWidth: 80,
+    height: 80,
+    paddingLeft: 5
   },
   sectionHeader: {
     paddingTop: 2,

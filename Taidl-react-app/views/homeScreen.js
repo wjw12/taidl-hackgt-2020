@@ -91,8 +91,10 @@ function HomeScreen({ navigation }) {
         <View style={styles.buttonView}>
             <Button
                 title="Top Up"
-                color='white'
-            />
+                color='#00BFA4'>
+                  <Text style={styles.text}>Top Up</Text>
+                </Button>
+            
         </View>
       </View>
       <TouchableOpacity
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     },
     top: {
       flex: 0.5,
-      backgroundColor: "grey",
+      backgroundImage: 'linear-gradient(322deg, rgba(0,191,164,1) 0%, rgba(146,210,224,1) 68%, rgba(203,211,244,1) 100%)',
       borderWidth: 0,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     },
     imageholder: {
         flex: 0.5,
-        backgroundColor: "grey",
+        visibility: 'hidden',
         borderWidth: 0,
         margin: 20,
       },
@@ -166,12 +168,12 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     buttonView:{
-        backgroundColor: '#00BFA4',
+        backgroundColor: '#d1f3ef',
         alignSelf: 'flex-end',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
         margin: 20,
         marginBottom: 0,
         marginTop: 0,

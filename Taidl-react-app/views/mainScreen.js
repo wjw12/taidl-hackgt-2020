@@ -19,6 +19,8 @@ const MainTabScreen = () => (
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
+      inactiveColor="#d1f3ef"
+      barStyle={{ backgroundColor: '#00BFA4' }}
     >
       <Tab.Screen
         name="Home"
@@ -35,7 +37,7 @@ const MainTabScreen = () => (
         name="Notifications"
         component={DetailsStackScreen}
         options={{
-          tabBarLabel: 'Updates',
+          tabBarLabel: 'Activity',
           tabBarColor: '#00BFA4',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-notifications" color={color} size={26} />
@@ -76,8 +78,8 @@ const DetailsStackScreen = ({navigation}) => (
         fontWeight: 'bold'
         }
     }}>
-        <DetailsStack.Screen name="Details" component={TransactionScreen} options={{
-        title:'Wallet',
+        <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
+        title:'Recent Transactions',
         headerLeft: () => (
             <Icon.Button name="ios-menu" size={25} backgroundColor="#00BFA4" onPress={() => navigation.openDrawer()}></Icon.Button>
         )
