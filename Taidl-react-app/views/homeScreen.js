@@ -16,11 +16,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { XDAI, USD, CONVERSION_RATE, PLACEHOLDER_ADDRESS, PLACEHOLDER_AMOUNT } from "../constants"
+import { XDAI, USD, CONVERSION_RATE, PLACEHOLDER_ADDRESS, PLACEHOLDER_AMOUNT, POLL_INTERVAL } from "../constants"
 
 import { getBalance } from "../api/address";
 import { getUserAddress } from "../api/user";
 import { initialState, reducer } from "../reducers/wallet"
+import usePoller from "../hooks/poller"
 
 
 function HomeScreen({ navigation }) {
@@ -57,6 +58,16 @@ function HomeScreen({ navigation }) {
 
     fetchData()
   }, [state.address])
+
+  const pollBalance = async () => {
+    if(state.address){
+      let newBalance = await getBalance(state.address)
+      if(newBalance !== state.balance){
+        dispatch({type: "BALANCE_LOADED", payload: {balance: newBalance}})
+      }
+    }
+  }
+  usePoller(pollBalance, POLL_INTERVAL)
 
     return (
     <View style={styles.container}>

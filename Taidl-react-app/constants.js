@@ -7,3 +7,6 @@ export const XDAI = "xDai"
 export const USD = "$"
 export const PLACEHOLDER_AMOUNT = "--.--"
 export const PLACEHOLDER_ADDRESS = ""
+
+
+export const POLL_INTERVAL = 2000 // ms
