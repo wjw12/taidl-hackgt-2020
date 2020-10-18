@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { 
     View, 
     Text, 
@@ -16,17 +16,55 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const myBalance = '10 Xdai';
-const myBalanceUSD = 'USD 10.00';
+import { XDAI, USD, CONVERSION_RATE, PLACEHOLDER_ADDRESS, PLACEHOLDER_AMOUNT } from "../constants"
+
+import { getBalance } from "../api/address";
+import { getUserAddress } from "../api/user";
+import { initialState, reducer } from "../reducers/wallet"
+
 
 function HomeScreen({ navigation }) {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    async function fetchData() {
+      dispatch({type: "LOADING"})
+
+      try {
+        const address = await getUserAddress(state.userId)
+        dispatch({type: "ADDRESS_LOADED", payload: {address: address}})
+        
+      } catch (e) {
+        dispatch(actionCreators.failure())
+      }
+    }
+
+    fetchData()
+  }, []) // userId
+
+  useEffect(() => {
+    async function fetchData() {
+      if (!state.address) return
+      dispatch({type: "LOADING"})
+
+      try {
+        const balance = await getBalance(state.address)
+        dispatch({type: "BALANCE_LOADED", payload: {balance: balance}})
+      } catch (e) {
+        dispatch({type: "ERROR"})
+      }
+    }
+
+    fetchData()
+  }, [state.address])
+
     return (
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.imageholder}>
         </View>
-        <Text style={styles.titleText}>${myBalance}</Text>
-        <Text style={styles.text}>${myBalanceUSD}</Text>
+        <Text style={styles.titleText}>{state.loading || state.error ? PLACEHOLDER_AMOUNT : state.balance}{XDAI}</Text>
+        <Text style={styles.text}>{"≈"+USD}{state.loading || state.error ? PLACEHOLDER_AMOUNT : (state.balance*CONVERSION_RATE).toFixed(2) }</Text>
         <View style={styles.buttonView}>
             <Button
                 title="Top Up"
