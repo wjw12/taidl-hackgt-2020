@@ -1,6 +1,6 @@
 
 export const initialState = {
-    userId: "Alice",
+    userId: null,
     address: null,
     balance: null,
     history: null,
