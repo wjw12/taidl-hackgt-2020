@@ -1,30 +1,64 @@
 # Taidl - Everyday Payment with xDai Blockchain
-
+# Taidl
 We present Taidl, an app that makes payment with cryptocurrency easy. You don't have to be an expert in blockchain. You don't need to worry about high transaction fee or fluctuation in the conversion rate. Taidl is powered with xDai, a stablecoin that lives on a sidechain of Ethereum. The transaction fee is as low as $0.01 for 500 transactions, making it the perfect solution to peer-to-peer payments, local business payments, online payments and international transfers.
 
-Taidl app has even more exciting features that assists you in your daily spending. There is a address book for storing your contacts, so you don't need to search and type the receipient account every time you pay. You can scan a QR code to make a payment. You can check your transaction history to keep track of your finance. 
+Taidl app has even more exciting features that assists you in your daily spending. There is a address book for storing your contacts, so you don't need to search and type the receipient account every time you pay. You can scan a QR code to make a payment. You can check your transaction history to keep track of your finance.
 
 The registration process is especially easy. Just sign up with your favorite user name, which does not have to be your real name. Type in your password, just like you are using any traditional finance app without the burden to understand how cryptocurrency works. For experts and nerds who want full control of the crypto wallet, we can handle over the custody of private keys to you. Otherwise your private keys will be securely stored in our encrypted server as safe as a bank.
 
-# Run React app
-- npm start
-- yarn run ios/npm run ios or yarn run android/npm run android
+# Inspirations
+- 🙊 Traditional crypto wallet apps are designed for expert users, traders and geeks. Unfriendly UI and complex technical functions can easily intimidate normal users. We keep the usability in mind when designing the interaction. We greatly reduce the complexity of using a mobile crypto wallet without sacrificing core functions or safety.
 
-# UI libraries
-- https://material-ui.com/zh/
-- https://ant.design/
-- https://react-bootstrap.github.io/
-- https://rebassjs.org/
+- 🎰 The price of crypto assets like BTC, ETH fluctuate heavily so they are not suitable for everyday uses. We adopts a stablecoin solution - xDai, an asset that is pegged to US Dollar. 1 xDai = 1 USD in almost every time. You don't need to worry about the conversion rate when paying and receiving money with xDai 
 
-# Important resources
-- https://github.com/expo/create-react-native-app 用这个bootstrap. Expo是一个线上开发运行react native的平台
-- https://github.com/austintgriffith/scaffold-eth 用来操作区块链相关，对我们特别有用的是提供的一些components https://github.com/austintgriffith/scaffold-eth#-components 还有hooks https://github.com/austintgriffith/scaffold-eth#-hooks
-- 有用的源代码主要在这里 https://github.com/austintgriffith/scaffold-eth/tree/master/packages/react-app/src 有一些跟blockchain相关的配置 environment variables暂时先无视
-- NCR关于这次hackathon的页面 https://hackgt.ncrcloud.com/dashboard
-- NCR Developer API列表 https://developer.ncrcloud.com/portals/dev-portal/api-explorer/details/8849/documentation?proxy=bsp-tdm-transaction-document-v2&path=get_transaction-documents_id_receipt
-- NCR Selling Service入门，提供一些支付和用户管理相关API https://hackgt.ncrcloud.com/assets/files/SellingService.pdf
+- ⚡️ Transactions on xDai chain happen incredibly fast - 10~15 seconds to everywhere in the world! The transaction fee does not depend on the amount that you transfer. It's one same price for $1 and $10,000. Fee is as low as $0.0002 for each transaction.
 
-# Taidl Design Doc
+- 🍩 In the near future cryptocurrency will become more mainstream with a larger user base. Small businesses who do not want to pay for credit card channels will benefit the most. Just print a QR code sticker at the checkout. Let customers scan the code and payment is done!
+
+- 🌞 For international students and international travellers, you will not need to worry about expensive fiat conversions. With blockchain, you can go anywhere in the world and use the same currency, or you can exchange xDai for local currency with small fees.
+
+# Main features
+
+- ✈️ Fast (within 10 seconds) transfer to worldwide users
+
+- 🎈 Free in-network transfers and very low transfer fees via xDAI blockchain (a high-performance sidechain of Ethereum)
+
+- 📅 Scan QR code to make a payment
+
+- ☕️ Request customer payments at local businesses
+
+- 📝 Address book to save recent contacts
+
+- 🥇 One unique user name, no need to type long addresses
+
+- 🔑 We let you manage your private key if you like
+
+- 💱 Support conversion to and from fiat (USD, GBP, EUR, AUD) (In Development)
+
+- 💲 Borrow BTC, ETH with xDai as collatoral (In Development)
+
+- 📈 Invest in DeFi mining protocals to earn passive income with your xDai savings (In Development)
+
+# How we built it
+- **React Native** for iOS and Android devices
+
+- **Vercel** for serverless backend functions
+
+- **MongoDB** as database
+
+- **NCR Consumer Data Management API** for user management
+
+- **Figma** as collaborative design tool
+
+
+# Git Repos
+- Mobile App https://github.com/wjw12/taidl-hackgt-2020/tree/main
+
+- Blockchain APIs https://github.com/wjw12/mock-xdai-chain
+
+- Backend https://github.com/wjw12/taidl-backend
+
+# Taidl Design Doc (old version)
 
 ## Goal
 Tidal is a xDAI wallet app that enables people to use cryptocurrency (xDAI stablecoin) in day-to-day spending.
@@ -85,9 +119,3 @@ Sender can send in either anonymous mode or not. The rule is:
 In a transfer preview page, the user is able to preview the transaction amount, the estimated arrival time (let's just generate a random number a few seconds), and see the sender name and receipient name (Tidal ID, or "Tidal User", or ETH address)
 
 
-# 参考
-## Coinbase钱包
-How do I protect against losing access to my funds?
-
-Coinbase Wallet is a user-controlled, non-custodial product. The app generates a 12 word recovery phrase which is what gives you, and only you, access to your account to move received funds. Coinbase will never have access to this seed, meaning that we cannot move funds on your behalf even if you lose access to your recovery phrase.
-We built an encrypted Google Drive and iCloud recovery phrase backup feature to help protect against seed loss. We encourage you to back up your recovery phrase using both the cloud backup feature as well as writing down your recovery phrase and storing it in a secure location. To access the backup features, tap Settings, and then Recovery Phrase.
