@@ -98,35 +98,35 @@ export function DrawerNavigation(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="mdi-shield-key" 
+                                name="shield-key-outline" 
                                 color={color}
                                 size={size}
                                 />
                             )}
-                            label="Recovery Phrase"
-                            onPress={() => {}}
+                            label="Private Key"
+                            onPress={() => {props.navigation.navigate('PrivateKeyScreen')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="mdi-account-cash" 
+                                name="account-check" 
                                 color={color}
                                 size={size}
                                 />
                             )}
                             label="Borrow"
-                            onPress={() => {}}
+                            onPress={() => {props.navigation.navigate('BorrowScreen')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="mdi-cash-usd-outline" 
+                                name="account-star" 
                                 color={color}
                                 size={size}
                                 />
                             )}
                             label="Earn"
-                            onPress={() => {}}
+                            onPress={() => {props.navigation.navigate('EarnScreen')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -137,7 +137,7 @@ export function DrawerNavigation(props) {
                                 />
                             )}
                             label="Notification"
-                            onPress={() => {}}
+                            onPress={() => {props.navigation.navigate('DetailsScreen')}}
                         />
                     </Drawer.Section>
                 </View>

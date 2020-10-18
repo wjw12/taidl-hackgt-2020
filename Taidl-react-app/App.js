@@ -11,7 +11,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { DrawerNavigation } from './components/drawerNavi';
 import LoginScreen from './views/loginScreen'
 import SignUpScreen from './views/signupScreen';
-//import HomeScreen from './views/homeScreen'
+import HomeScreen from './views/homeScreen'
+import EarnScreen from './views/earnScreen'
+import BorrowScreen from './views/borrowScreen'
+import PrivateKeyScreen from './views/privateKeyScreen'
 import mainScreen from './views/mainScreen';
 import RequestScreen from './views/requestScreen';
 import RecipientScreen from './views/recipientScreen';
@@ -102,20 +105,20 @@ function App() {
     }
   }), []);
 
-  useEffect(() => {
-    setTimeout(async() => {
-      // setIsLoading(false);
-      let userToken;
-      userToken = null;
-      try {
-        userToken = await AsyncStorage.getItem('userToken');
-      } catch(e) {
-        console.log(e);
-      }
-      // console.log('user token: ', userToken);
-      dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(async() => {
+  //     // setIsLoading(false);
+  //     let userToken;
+  //     userToken = null;
+  //     try {
+  //       userToken = await AsyncStorage.getItem('userToken');
+  //     } catch(e) {
+  //       console.log(e);
+  //     }
+  //     // console.log('user token: ', userToken);
+  //     dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
+  //   }, 1000);
+  // }, []);
 
   if( loginState.isLoading ) {
     return(
@@ -135,6 +138,10 @@ function App() {
           <Drawer.Screen name="QRScanScreen" component={QRScanStackScreen} />
           <Drawer.Screen name="NewRecipientScreen" component={NewRecipientStackScreen} />
           <Drawer.Screen name="SentConfirmScreen" component={SentConfirmStackScreen} />
+          <Drawer.Screen name="PrivateKeyScreen" component={PrivateKeyScreen} />
+          <Drawer.Screen name="HomeScreen" component={HomeScreen} />
+          <Drawer.Screen name="EarnScreen" component={EarnScreen} />
+          <Drawer.Screen name="BorrowScreen" component={BorrowScreen} />
         </Drawer.Navigator>
        )
       :

@@ -39,6 +39,17 @@ function NewRecipientScreen({ navigation }) {
     fetchData()
   }, [])
 
+  const textInputChange = function(val) {
+    try {
+      let amount = parseFloat(val)
+      if (!amount || amount < 0) { return; }
+      AsyncStorage.setItem('amount', amount)
+
+    } catch (e) {
+
+    }
+  }
+
     return (
       <View style={{ flex: 1 }}>
         <View style={[SectionListStyle.row, {margin: 'auto'}]}>
@@ -69,6 +80,7 @@ function NewRecipientScreen({ navigation }) {
             style={styles.textInput}
             placeholder="xDai"
             maxLength={20}
+            onChangeText={(val) => textInputChange(val)}
           />
         </View>
 
