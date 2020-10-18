@@ -11,8 +11,6 @@ export const SecondaryButtonStyle = StyleSheet.create({
     marginTop: 5,
     borderColor: '#00bfa4',
     borderWidth: 1.5,
-    fontSize: 15,
-    fontWeight: 'bold',
     paddingTop: 5,
     paddingBottom: 5
 })

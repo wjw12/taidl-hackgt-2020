@@ -4,6 +4,8 @@ export const initialState = {
     address: null,
     balance: null,
     history: null,
+    receipient: null,
+    receipientAddress: null,
     loading: true,
     error: false
 }
@@ -20,5 +22,9 @@ export function reducer(state, action) {
             return {...state, balance: action.payload.balance.toFixed(2), loading: false, error: false};
         case "SET_USERID":
             return {...state, userId: action.payload.userId}
+        case "SET_RECEIPIENT":
+            return {...state, receipient: action.payload.userId}
+        case "SET_RECEIPIENT_ADDRESS":
+            return {...state, receipientAddress: action.payload.address}
     }
 }

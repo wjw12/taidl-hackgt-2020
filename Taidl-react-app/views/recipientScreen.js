@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { 
     View, 
     Text, 
@@ -14,7 +14,9 @@ import Contacts from '../model/contacts'
 import { randInt } from '../utils'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SectionListStyle from '../styles/sectionList'
-import SecondaryButtonStyle from '../styles/button'
+import { reducer, initialState } from '../reducers/wallet'
+import { getUserAddress } from "../api/user";
+import AsyncStorage from '@react-native-community/async-storage';
 //import QR from 'qrcode.react';
 
 const NUM_RECENT = 2
@@ -33,18 +35,29 @@ for (let i = 0; i < NUM_CONTACTS; i++) {
 }
 
 function RecipientScreen({ navigation }) {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   const renderItem = ({item}) => {
     return (
       <View style={styles.row}>
         <FontAwesome style={styles.icon} name="circle" color="#d1f3ef" size={75}/>
 
-        <View style={{
+        <TouchableOpacity style={{
           flex: 5,
           flexDirection: 'row',
           width: '100%',
           height: '100%',
           justifyContent: 'space-between',
-        }}>
+        }}
+        
+        onPress={() => {
+          AsyncStorage.setItem('receipient', item.userId).then(() => {
+            return getUserAddress(item.userId)
+          }).then((addr) => {
+            AsyncStorage.setItem('receipientAddress', addr)
+          })
+          navigation.navigate('NewRecipientScreen')}
+        }>
           <View style={{flex: 5, flexDirection: 'row', margin: 'auto', height: '100%'}}>
             <Text style={styles.boldUserName}>{item.userId}</Text>
           </View>
@@ -52,20 +65,19 @@ function RecipientScreen({ navigation }) {
           <View style={{flex: 2, flexDirection: 'row', margin: 'auto', height: '100%'}}>
           </View> 
 
-        </View>
+        </TouchableOpacity>
       </View>
     )
   }
 
   return (
     <View style={{flex: 1, paddingTop: 0}}>
-      
-      <View style={{SecondaryButtonStyle}}>
+      <View style={styles.row}>
           <TouchableOpacity
-              onPress={() => {navigation.navigate('RequestScreen')}}
-              style={{textAlign: 'center', margin: 'auto'}}
+              onPress={() => {navigation.navigate('QRScanScreen')}}
+              style={{textAlign: 'center', margin: 'auto', height: 60}}
           >
-              <Text style={{color: "#00bfa4"}}>Scan QR Code</Text>
+              <Text style={{color: "#00bfa4", fontSize: 18, fontWeight: 'bold'}}>Scan QR Code</Text>
           </TouchableOpacity>
       </View>
 

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-import SectionListStyle from '../styles/SectionList'
+import SectionListStyle from '../styles/sectionList'
 import RecentTransactions from '../model/recent'
 import { randInt } from '../utils'
 
@@ -18,29 +18,23 @@ const NUM_LAST_WEEK = randInt(5) + 2
 
 const styles = SectionListStyle
 
+let l1 = [], l2 = []
+let n = RecentTransactions.length
+for (let i = 0; i < NUM_THIS_WEEK; ++i) {
+  let item = RecentTransactions[randInt(n)]
+  item.isSender = randInt(2) > 0 
+  l1.push(item)
+}
+for (let i = 0; i < NUM_LAST_WEEK; ++i) {
+  let item = RecentTransactions[randInt(n)]
+  item.isSender = randInt(2) > 0 
+  l2.push(item)
+}
+
+let thisWeek = l1
+let lastWeek = l2
+
 function DetailsScreen({ navigation }) {
-  const [thisWeek, setThisWeek] = useState([])
-  const [lastWeek, setLastWeek] = useState([])
-
-  useEffect(() => {
-    console.log("call useeffect")
-    let l1 = [], l2 = []
-    let n = RecentTransactions.length
-    for (let i = 0; i < NUM_THIS_WEEK; ++i) {
-      let item = RecentTransactions[randInt(n)]
-      item.isSender = randInt(2) > 0 
-      l1.push(item)
-    }
-    for (let i = 0; i < NUM_LAST_WEEK; ++i) {
-      let item = RecentTransactions[randInt(n)]
-      item.isSender = randInt(2) > 0 
-      l2.push(item)
-    }
-
-    setThisWeek(l1)
-    setLastWeek(l2)
-  }, [])
-
   const renderItem = ({item}) => {
     console.log(item)
     const amount = (item.isSender ? '+ ' : '- ') + item.amount.toFixed(2).toString() + " xDai"

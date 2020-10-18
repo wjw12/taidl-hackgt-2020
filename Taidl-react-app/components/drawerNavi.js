@@ -33,8 +33,8 @@ export function DrawerNavigation(props) {
                                 size={50}
                             />
                             <View style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>John Doe</Title>
-                                <Caption style={styles.caption}> @johndoe </Caption>
+                                <Title style={styles.title}>NakamotoSatoshi</Title>
+                                <Caption style={styles.caption}> @nakamotosatoshi </Caption>
                             </View>
                         </View>
 
