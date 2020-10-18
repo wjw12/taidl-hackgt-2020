@@ -107,7 +107,7 @@ const SignUpScreen = ({navigation}) => {
             return;
         }
 
-        const duplicateUser = await findUserExists(username)
+        const duplicateUser = await findUserExists(userName)
         if (duplicateUser) {
             Alert.alert('User already exists!', 'Please log in with the username.', [
                 {text: 'Okay'}
@@ -115,8 +115,8 @@ const SignUpScreen = ({navigation}) => {
             return;
         }
 
-        console.log("sign up" , username, password)
-        await createUser(username, username+"@gmail.com", password)
+        console.log("sign up" , userName, password)
+        await createUser(userName, userName+"@gmail.com", password)
 
         navigation.goBack()
     }

@@ -71,6 +71,7 @@ function DetailsScreen({ navigation }) {
           ]}
           renderItem={renderItem}
           renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
         />
       </View>
       // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

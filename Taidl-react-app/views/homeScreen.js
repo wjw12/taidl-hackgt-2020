@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-community/async-storage';
+import { LinearGradient } from 'expo-linear-gradient'
 
 import { XDAI, USD, CONVERSION_RATE, PLACEHOLDER_ADDRESS, PLACEHOLDER_AMOUNT, POLL_INTERVAL } from "../constants"
 
@@ -78,7 +79,13 @@ function HomeScreen({ navigation }) {
 
     return (
     <View style={styles.container}>
-      <View style={styles.top}>
+      <LinearGradient 
+        colors={['rgba(0,191,164,1)', 'rgba(146,210,224,1)', 'rgba(203,211,244,1)']}
+        locations={[0, 0.65, 0.95]}
+        start={{x: 0.9, y: 0.9}}
+        end={{x:0.3, y: 0.1}}
+        style={styles.top}>
+          
         <View style={styles.imageholder}>
         </View>
         <Text style={styles.titleText}>{state.loading || state.error ? PLACEHOLDER_AMOUNT : state.balance}{XDAI}</Text>
@@ -91,7 +98,7 @@ function HomeScreen({ navigation }) {
                 </Button>
             
         </View>
-      </View>
+      </LinearGradient>
       <TouchableOpacity
         style={[styles.touchable, {
             backgroundColor: '#00BFA4',
@@ -134,7 +141,6 @@ const styles = StyleSheet.create({
     },
     top: {
       flex: 0.5,
-      backgroundImage: 'linear-gradient(322deg, rgba(0,191,164,1) 0%, rgba(146,210,224,1) 68%, rgba(203,211,244,1) 100%)',
       borderWidth: 0,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
@@ -146,7 +152,7 @@ const styles = StyleSheet.create({
     },
     imageholder: {
         flex: 0.5,
-        visibility: 'hidden',
+        color: 'rgba(0,0,0,0)',
         borderWidth: 0,
         margin: 20,
       },

@@ -8,7 +8,7 @@ import {
 function SentConfirmScreen({ navigation }) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>SentConfirm Screen</Text>
+        <Text>Transaction Confirmed</Text>
 
       </View>
     );
