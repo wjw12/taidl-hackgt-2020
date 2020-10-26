@@ -18,6 +18,7 @@ export async function getBalance(address) {
     const response = await fetch(XDAI_API + "address?address=" + address);
     if (!response.ok) return null;
     const result = await response.json();
+    if (typeof result.balance != 'number') result.balance = parseFloat(result.balance)
     return result.balance;
 }
 

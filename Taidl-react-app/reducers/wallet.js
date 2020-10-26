@@ -19,7 +19,7 @@ export function reducer(state, action) {
         case "ADDRESS_LOADED": 
             return {...state, address: action.payload.address, loading: false, error: false};
         case "BALANCE_LOADED":
-            return {...state, balance: action.payload.balance.toFixed(2), loading: false, error: false};
+            return {...state, balance: action.payload.balance ? (typeof action.payload.balance == 'number' ? action.payload.balance.toFixed(2) : parseFloat(action.payload.balance).toFixed(2)) : 0, loading: false, error: false};
         case "SET_USERID":
             return {...state, userId: action.payload.userId}
         case "SET_RECEIPIENT":
